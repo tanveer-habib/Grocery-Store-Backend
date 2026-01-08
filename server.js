@@ -20,7 +20,7 @@ await connectDB()
 await connectCloudinary();
 
 // The following front-end can request.
-const allowOrigins = ["http://localhost:5173", "http://192.168.43.106:5173"]
+const allowOrigins = ["http://localhost:5173", "http://192.168.43.106:5173", "https://grocery-store-frontend-eta.vercel.app"];
 
 // Stripe webhooks url
 app.post("/stripe", express.raw({ type: "application/json" }), stripeWebhooks);

@@ -13,7 +13,7 @@ import orderRouter from "./routes/orderRoute.js";
 import { stripeWebhooks } from "./controllers/orderControllers.js";
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 // Connection of MongoDB and Cludinary
 await connectDB()
@@ -21,7 +21,6 @@ await connectCloudinary();
 
 // The following front-end can request.
 const allowOrigins = ["http://localhost:5173", "http://192.168.43.106:5173", "https://grocery-store-frontend-eta.vercel.app"];
-
 // Stripe webhooks url
 app.post("/stripe", express.raw({ type: "application/json" }), stripeWebhooks);
 
@@ -29,6 +28,7 @@ app.post("/stripe", express.raw({ type: "application/json" }), stripeWebhooks);
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({ origin: allowOrigins, methods: ["GET", "POST", "PUT", "DELETE"], credentials: true }));
+app.options("*", cors());
 
 app.get("/", (req, res) => {
     res.send("Hey this is Home Page.");

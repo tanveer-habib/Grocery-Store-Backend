@@ -44,7 +44,6 @@ export const placeOrderStripe = async (req, res) => {
     try {
         const { userId, items, address } = req.body;
         const { origin } = req.headers;
-        console.log("Stripe Hitted");
 
         if (!userId || items.length < 1 || !address) {
             return res.json({ success: false, message: "Invalid Data" });

@@ -28,7 +28,7 @@ app.post("/stripe", express.raw({ type: "application/json" }), stripeWebhooks);
 // Middlewares
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: allowOrigins, credentials: true }));
+app.use(cors({ origin: allowOrigins, methods: ["GET", "POST", "PUT", "DELETE"], credentials: true }));
 
 app.get("/", (req, res) => {
     res.send("Hey this is Home Page.");
